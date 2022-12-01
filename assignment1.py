@@ -3,7 +3,7 @@
 #Inputting information
 
 n = int(input("Enter the number of Polygon points.."))
-print("Enter the x and y coordinates of each of the polygon points..")
+print("Enter the x and y coordinates of each of the polygon points(In anticlockwise direction)..")
 
 xs = []
 ys = []
@@ -30,17 +30,23 @@ for i in range(0,n):
     i2 = i2 + (ys[i]-ys[i-1]) * ( (xs[i]**3) + (xs[i]**2 * xs[i-1]) + (xs[i] * xs[i-1]**2) + xs[i-1]**3 )
     i3 = i3 + (ys[i]-ys[i-1]) * (ys[i] * ((3* xs[i]**2 + 2*xs[i] * xs[i-1] + xs[i-1]**2)) + ys[i-1]*((3*xs[i-1]**2 + 2*xs[i]*xs[i-1]+xs[i]**2 )))
 
+# Cross Sectional Area
 Ax = (1/2 *a)
+# Static moments of Cross Section
 Sx = -(1/6 * s1)
 Sy = (1/6 * s2)
+# Axial moments of inertia
 Ix = (-1/12 * i1)
 Iy = (1/12 * i2)
 Ixy = (-1/24 * i3)
+# Coordinates of the Centroid
 Xt = Sy/Ax
 Yt = Sx/Ax
+# Moments of inertia with respect to the axes moved in parallel through the Centroid
 Ixt = Ix - Yt**2*Ax
 Iyt = Iy - Xt**2*Ax
 Ixyt = Ixy+ Xt*Yt*Ax
+
 
 #Printing Results
 
